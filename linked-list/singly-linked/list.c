@@ -177,7 +177,9 @@ list* li_difference(list* A, list* B) {
 
 /// self-organizing strategies
 
-void MTF(list* L, int number, int requests[number]){
+int MTF(list* L, int number, int requests[number]){
+    int cost = 0;
+
     for (int i = 0; i < number; ++i) {
         int r = requests[i];  // data being requested
         node* loop = L->head;  // auxiliar pointer
@@ -185,6 +187,8 @@ void MTF(list* L, int number, int requests[number]){
         node* prev = NULL;  // node "behind" the one being requested
 
         do {
+            cost++;
+
             prev = ptr;
             ptr = loop;
             loop = loop->next;
@@ -198,10 +202,14 @@ void MTF(list* L, int number, int requests[number]){
 
         // here could/should be added a function that operates over the node with the requested data
     }
+
+    return cost;
 }
 
 
-void transpose(list* L, int number, int requests[number]){
+int transpose(list* L, int number, int requests[number]){
+    int cost = 0;
+    
     for (int i = 0; i < number; ++i) {
         int r = requests[i];  // data being requested
         node* ptr = L->head;  // node being requested
@@ -209,6 +217,8 @@ void transpose(list* L, int number, int requests[number]){
         node* preprev = NULL;  // node "behind" the one being swapped
 
         while (ptr) {
+            ++cost;
+
             if (ptr->data == r)
                 break;
 
@@ -226,16 +236,22 @@ void transpose(list* L, int number, int requests[number]){
                 preprev->next = ptr;
         }
     }
+
+    return cost;
 }
 
 
-void count(list* L, int number, int requests[number]){
+int count(list* L, int number, int requests[number]){
+    int cost = 0;
+    
     for (int i = 0; i < number; ++i) {
         int r = requests[i];  // data being requested
         node* ptr = L->head;  // node being requested
         node* prev = NULL;  // node "behind" the one being requested
 
         while (ptr) {
+            ++cost;
+
             if (ptr->data == r) {
                 ptr->counter += 1;
                 break;
@@ -273,7 +289,7 @@ void count(list* L, int number, int requests[number]){
             }
         }
     }
+    return cost;
 }
-
 
 /// 

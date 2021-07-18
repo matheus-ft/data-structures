@@ -1,4 +1,3 @@
-
 /// Singly linked list node
 typedef struct list_node {
   int data;
@@ -92,8 +91,9 @@ list* li_difference(list* A, list* B);
  * @param L list containing the data being requested
  * @param number amount of requests
  * @param requests array of the ints being requested (data is assumed to be in the list, pay attention to this)
+ * @return the cost of the whole operation (in amount of nodes visited)
  */
-void MTF(list* L, int number, int requests[number]);
+int MTF(list* L, int number, int requests[number]);
 
 
 /**
@@ -103,8 +103,9 @@ void MTF(list* L, int number, int requests[number]);
  * @param L list containing the data being requested
  * @param number amount of requests
  * @param requests array of the ints being requested (data is assumed to be in the list, pay attention to this)
+ *  * @return the cost of the whole operation (in amount of nodes visited)
  */
-void transpose(list* L, int number, int requests[number]);
+int transpose(list* L, int number, int requests[number]);
 
 
 /**
@@ -115,5 +116,8 @@ void transpose(list* L, int number, int requests[number]);
  * @param L list containing the data being requested
  * @param number amount of requests
  * @param requests array of the ints being requested (data is assumed to be in the list, pay attention to this)
+ * @return the cost of the whole operation (in amount of nodes visited)
  */
-void count(list* L, int number, int requests[number]);
+int count(list* L, int number, int requests[number]);
+
+///
