@@ -96,7 +96,7 @@ list* li_union(list* A, list* B) {
         } a = A->head;
 
         if (do_it) {
-            if (li_insert(C, b->data) == 0) {
+            if (l_insert(C, b->data, 0) == 0) {
                 free(C);
                 return NULL;
             }
@@ -106,7 +106,7 @@ list* li_union(list* A, list* B) {
     }
 
     while (a) {
-        if (li_insert(C, a->data) == 0) {
+        if (l_insert(C, a->data, 0) == 0) {
             free(C);
             return NULL;
         }
@@ -129,7 +129,7 @@ list* li_intersection(list* A, list* B) {
 
         while (a != NULL) {
             if (b->data == a->data) {
-                if (li_insert(C, b->data) == 0) {
+                if (l_insert(C, b->data, 0) == 0) {
                     free(C);
                     return NULL;
                 }
@@ -162,7 +162,7 @@ list* li_difference(list* A, list* B) {
         } b = B->head;
 
         if (do_it) {
-            if (li_insert(C, a->data) == 0) {
+            if (l_insert(C, a->data, 0) == 0) {
                 free(C);
                 return NULL;
             }
