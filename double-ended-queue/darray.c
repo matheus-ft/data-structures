@@ -3,7 +3,7 @@
 #include "darray.h"
 
 
-darray* da_alloc(int capacity) {
+darray* dalloc(int capacity) {
     darray* A = malloc(sizeof(darray));
     
     if (A) {
@@ -21,7 +21,7 @@ darray* da_alloc(int capacity) {
 }
 
 
-void da_free(darray* A) {
+void free_darray(darray* A) {
     int last = A->size + A->first - 1;
     int u;
 

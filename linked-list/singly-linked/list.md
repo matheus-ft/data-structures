@@ -1,4 +1,4 @@
-# Singly-Linked List
+# Singly Linked List
  This is an implementation of a linked list (*list*) in the "classical" fashion.
 
  ## The *list* structure

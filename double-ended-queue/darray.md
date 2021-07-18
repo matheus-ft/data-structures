@@ -1,5 +1,5 @@
-# Double Ended Queue
- This is an implementation of a double ended queue (*deque*) with an array of **strings** as the data stored.
+# Double-ended Queue
+ This is an implementation of a double-ended queue (*deque*) with an array of **strings** as the data stored.
  To be more precise, we represent our deque using a *dynamic array* (that's why `darray`).
 
  ## The *deque* structure

@@ -8,7 +8,7 @@
 #define DARRAY_H
 
 
-typedef struct darray {
+typedef struct dynamic_array_deque {
 
    char** data; // The array of pointers to char, that is, the array of string.
 
@@ -29,7 +29,7 @@ typedef struct darray {
  * @param capacity the desired initial capacity for the array (it is also the minimum array size)
  * @return The address of a new darray.  On failure it returns NULL.
  */
-darray* da_alloc(int capacity);
+darray* dalloc(int capacity);
 
 
 /**
@@ -37,7 +37,7 @@ darray* da_alloc(int capacity);
 
  * @param A dynamic array to be deallocated
  */
-void da_free(darray* A);
+void free_darray(darray* A);
 
 
 /**
