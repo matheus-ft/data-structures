@@ -1,16 +1,18 @@
 /// Singly linked list node
-typedef struct list_node {
+struct list_node {
   int data;
   int counter;  // the amount of times the node's data has been requested
-  struct node* next;
-} node;
+  struct list_node* next;
+}; 
+typedef struct list_node node;
 
 
 /// Singly linked list capsule
-typedef struct linked_list {
+struct linked_list {
   node* head;  // the first node in the list
   int size;
-} list;
+}; 
+typedef struct linked_list list;
 
 
 /// main operations

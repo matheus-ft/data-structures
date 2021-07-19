@@ -23,6 +23,11 @@ void free_list(list* L) {
 
 
 int l_insert(list* L, int data, int position) {
+    if (position < 0) {
+        position = L->size + position + 1;  // this makes some sense, think about it
+        // return 0;  // if you do not accept negative positions, just return 0
+    }
+
     node* n = malloc(sizeof(node));
     if (n == NULL)
         return 0;
@@ -30,6 +35,13 @@ int l_insert(list* L, int data, int position) {
     n->data = data;
     n->counter = 0;
 
+    if (position == 0) {
+        n->next = L->head;
+        L->head = n;
+        ++L->size;
+        return 1;
+    }
+    
     if ( position > L->size)
         position = L->size++;  // the increment must be done after
     else
@@ -291,5 +303,3 @@ int count(list* L, int number, int requests[number]){
     }
     return cost;
 }
-
-/// 
