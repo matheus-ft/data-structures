@@ -5,60 +5,61 @@
 
 /// main operations
 
-list* lalloc() { return calloc(1,sizeof(list)); }
+list* lalloc(){ return calloc(1, sizeof(list)); }
 
 
-void free_list(list* L) {
-  node* p = L->head;
-  node* aux = NULL;
+void free_list(list* L){
+    node* p = L->head;
+    node* aux = NULL;
 
-  while (p) {
-    aux = p->next;
-    free(p);
-    p = aux;
-  }
+    while (p) {
+        aux = p->next;
+        free(p);
+        p = aux;
+    }
 
-  free(L);
+    free(L);
 }
 
 
-int l_insert(list* L, int data, int position) {
+int l_insert(list* L, int data, int position){
+    // corrects the position argument (in a "user-friendly" way)
     if (position < 0) {
         position = L->size + position + 1;  // this makes some sense, think about it
         // return 0;  // if you do not accept negative positions, just return 0
+    } else if (position > L->size) {
+        position = L->size; 
     }
 
+    // allocates memory for the new data point, stops on failure
     node* n = malloc(sizeof(node));
     if (n == NULL)
         return 0;
 
+    // the insertion itself
     n->data = data;
     n->counter = 0;
 
     if (position == 0) {
         n->next = L->head;
         L->head = n;
-        ++L->size;
-        return 1;
+    } 
+    else {
+        node* aux = L->head;
+        for (int i = 0; i < position - 1; ++i)
+            aux = aux->next;
+        aux = aux->next;      
+            aux = aux->next;
+        n->next = aux->next;
+        aux->next = n;
     }
     
-    if ( position > L->size)
-        position = L->size++;  // the increment must be done after
-    else
-        ++L->size;
-
-
-    node* aux = L->head;
-    for (int i = 0; i < position - 1; ++i)
-        aux = aux->next;      
-    n->next = aux->next;
-    aux->next = n;
-    
+    L->size++;
     return 1;
 }
 
 
-node* l_delete(list* L, int position) {
+node* l_delete(list* L, int position){
     node* aux = L->head;
     node* del = aux->next;
 
@@ -73,23 +74,23 @@ node* l_delete(list* L, int position) {
 }
 
 
-void printl(list* L) {
-  printf("[");
+void printl(list* L){
+    printf("[");
 
-  node* p = L->head;
-  while ( (p != NULL) && (p->next != NULL)) {
-    printf("%d, ",p->data);
-    p = p->next;
-  } if (p)
-    printf("%d",p->data);
+    node* p = L->head;
+    while ( (p != NULL) && (p->next != NULL) ) {
+        printf("%d, ",p->data);
+        p = p->next;
+    } if (p)
+        printf("%d",p->data);
 
-  printf("]");
+    printf("]");
 }
 
 
 /// set-like operations
 
-list* li_union(list* A, list* B) {
+list* li_union(list* A, list* B){
     list* C = lalloc();
     if (!C)
         return NULL;
@@ -129,7 +130,7 @@ list* li_union(list* A, list* B) {
 }
 
 
-list* li_intersection(list* A, list* B) {
+list* li_intersection(list* A, list* B){
     list* C = lalloc();
     if (!C)
         return NULL;
@@ -155,7 +156,7 @@ list* li_intersection(list* A, list* B) {
 }
 
 
-list* li_difference(list* A, list* B) {
+list* li_difference(list* A, list* B){
     list* C = lalloc();
     if (!C)
         return NULL;
@@ -247,6 +248,8 @@ int transpose(list* L, int number, int requests[number]){
             if (preprev != NULL)
                 preprev->next = ptr;
         }
+
+        // here could/should be added a function that operates over the node with the requested data
     }
 
     return cost;
@@ -300,6 +303,8 @@ int count(list* L, int number, int requests[number]){
                 loop = loop->next;
             }
         }
+
+        // here could/should be added a function that operates over the node with the requested data
     }
-    return cost;
+    return cost;  // this function can be optimized
 }
