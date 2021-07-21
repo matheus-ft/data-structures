@@ -48,8 +48,7 @@ int l_insert(list* L, int data, int position){
         node* aux = L->head;
         for (int i = 0; i < position - 1; ++i)
             aux = aux->next;
-        aux = aux->next;      
-            aux = aux->next;
+        
         n->next = aux->next;
         aux->next = n;
     }
