@@ -1,6 +1,6 @@
 # Data Structures
  ## Collection of a few data structures implemented in C.
-
+ 
+ ## [Linked lists](linked-list)
  ## [Double-ended queue](double-ended-queue)
- ## [Singly linked list](linked-list/singly-linked)
  ## [Binary search tree](binary-search-tree)
