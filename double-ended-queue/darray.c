@@ -3,7 +3,7 @@
 #include "darray.h"
 
 
-darray* dalloc(int capacity) {
+darray* dalloc(int capacity){
     darray* A = malloc(sizeof(darray));
     
     if (A) {
@@ -21,7 +21,7 @@ darray* dalloc(int capacity) {
 }
 
 
-void free_darray(darray* A) {
+void free_darray(darray* A){
     int last = A->size + A->first - 1;
     int u;
 
@@ -36,7 +36,7 @@ void free_darray(darray* A) {
 }
 
 
-int da_push(darray* A, char* string) {
+int da_push(darray* A, char* string){
     char* str = malloc( (strlen(string) + 1) * sizeof(char));
     if (str)
         strcpy(str, string);
@@ -87,7 +87,7 @@ int da_push(darray* A, char* string) {
 }
 
 
-char* da_pop(darray* A) {
+char* da_pop(darray* A){
     if (A->size == 0)
         return NULL;
 
@@ -131,7 +131,7 @@ char* da_pop(darray* A) {
 }
 
 
-int da_inject(darray* A, char* string) {
+int da_inject(darray* A, char* string){
     char* str = malloc( (strlen(string) + 1) * sizeof(char));
     if (str != NULL) 
         strcpy(str, string);
@@ -181,7 +181,7 @@ int da_inject(darray* A, char* string) {
 }
 
 
-char* da_eject(darray* A) {
+char* da_eject(darray* A){
     if (A->size == 0)
         return NULL;
 
@@ -227,16 +227,16 @@ char* da_eject(darray* A) {
 }
 
 
-char* da_first(darray* A) { return A->data[A->first]; }
+char* da_first(darray* A){ return A->data[A->first]; }
 
 
-char* da_last(darray* A) {
+char* da_last(darray* A){
     int last = ( A->size + A->first - 1 ) % A->capacity;
     return A->data[last];
 }
 
 
-int da_is_empty(darray* A) {
+int da_is_empty(darray* A){
     if (A == NULL || A->size == 0)
         return 1;
     else

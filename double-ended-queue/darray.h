@@ -23,7 +23,7 @@ typedef struct dynamic_array_deque {
 
 
 /**
- * @brief Allocate a darray and, in this case, the array of pointers to strings. 
+ * @brief Allocates a darray and, in this case, the array of pointers to strings. 
    Sets the initial state of the darray properly.
  
  * @param capacity the desired initial capacity for the array (it is also the minimum array size)
@@ -33,7 +33,7 @@ darray* dalloc(int capacity);
 
 
 /**
- * @brief Release all the strings in a darray and the darray itself.
+ * @brief Releases all the strings in a darray and the darray itself.
 
  * @param A dynamic array to be deallocated
  */
@@ -41,7 +41,7 @@ void free_darray(darray* A);
 
 
 /**
- * @brief Add a copy of a string to the end of the sequence.
+ * @brief Adds a copy of a string to the end of the sequence.
    If the array is full, it tries to double its capacity and then adds the
    string.
    When resizing the array is not possible, it will not
@@ -49,13 +49,13 @@ void free_darray(darray* A);
 
  * @param A the dynamic array receiving data
  * @param string new data to be stored
- * @return On success it returns 1. On failure, 0.
+ * @return 1, on success. 0, on failure.
  */
 int da_push(darray* A, char* string);
 
 
 /**
- * @brief Remove a string from the end of the sequence and return a pointer to it.
+ * @brief Removes a string from the end of the sequence and return a pointer to it.
    If the array is 1/4 full, this function halves its capacity and then removes
    the string.  The capacity will never be smaller than the initial capacity.
 
@@ -66,7 +66,7 @@ char* da_pop(darray* A);
 
 
 /**
- * @brief Add a copy of a string to the beginning of the sequence.
+ * @brief Adds a copy of a string to the beginning of the sequence.
    If the array is full, it tries to double its capacity and then adds the
    string.
    When resizing the array is not possible, it will not
@@ -74,18 +74,18 @@ char* da_pop(darray* A);
 
  * @param A the dynamic array receiving data
  * @param string new data to be stored 
- * @return On success it returns 1. On failure, 0.
+ * @return 1, on success. 0, on failure.
  */
 int da_inject(darray* A, char* string);
 
 
 /**
- * @brief Remove a string from the beginning of the sequence and return a pointer to it.
+ * @brief Removes a string from the beginning of the sequence and return a pointer to it.
    If the array is 1/4 full, this function halves its capacity and then removes
    the string.  The capacity will never be smaller than the initial capacity.
 
  * @param A dynamic array from which data is being retrievied
- * @return Address of the data copied from the former first element
+ * @return Address of the data copied from the former first element.
  */
 char* da_eject(darray* A);
 
@@ -97,7 +97,7 @@ char* da_first(darray* A);
 
 
 /**
- * @return Return a pointer to the last string in the sequence. 
+ * @return A pointer to the last string in the sequence. 
  */
 char* da_last(darray* A);
 

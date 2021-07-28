@@ -15,7 +15,7 @@
  The main operations available on a deque are:
  * push (appends data to the end of the sequence)
  * pop (retrieves, by remotion, data from the end of the sequence)
- * inject (inserts data in the beggining of the sequence)
+ * inject (inserts data in the begining of the sequence)
  * eject (retrieves, by remotion, data from the beggining of the sequence)
  
  It should be noted that this names specifically might be switched depending on the language, programmer, or book author.
@@ -32,7 +32,7 @@
     * When only **25% full**, the array **halves** its capacity
 
     But it should not be difficult to see where the code should differ in case it is needed for the laws to change.
- * The `min_cap` field is updated every time the `capacity` field is supposed to be altered, but, as the name should imply, `initial_cap` (the *actual* minimum capacity) **never** changes in **this** implementation and also limits the halving of `min_cap`.
+ * The `min_cap` field is updated every time the `capacity` field is supposed to be altered; but, as the name should imply, `initial_cap` **never** changes, and, in **this** implementation, also limits the halving of `min_cap` (as the "ultimate" minimum capacity).
 
  ### Fork and let me know in case you come up with a better and/or more general version of my implementation (or, of course, you've found any mistakes)
  I hope it helped you, though ; )
