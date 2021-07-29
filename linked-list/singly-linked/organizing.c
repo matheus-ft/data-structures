@@ -1,5 +1,9 @@
-/*
-	Self-organizing strategies are very useful when its necessary to obtain data
+/**
+ * @file organizing.c
+ * @author Matheus Feres Turcheti (matheusft.mft@gmail.com)
+ * @brief 
+    
+    Self-organizing strategies are very useful when its necessary to obtain data
 from a linked list (since it is not one of its strong points, compared to arrays for example),
 making the whole process potentially more efficient.
 	To test the three strategies implemented (comparing their costs) over a sorted list of ints from 1 to N, the input has to be:
@@ -9,8 +13,13 @@ amount_of_requirements
 int_required int_required ... int_required
 ^D
 
-	On any case of failure, the program stops with an error message. 
-*/
+	On any case of failure, the program stops with an error message.
+
+ * @version 0.2
+ * @date 2021-07-29
+ * 
+ */
+
 
 #include <stdlib.h>
 #include <stdio.h>

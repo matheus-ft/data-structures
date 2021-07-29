@@ -23,10 +23,10 @@ void free_list(list* L){
 int l_insert(list* L, int data, int position){
     // corrects the position argument (in a "user-friendly" way)
     if (position < 0) {
-        position = L->size + position + 1;  // this makes some sense, think about it
+        position = L->lenght + position + 1;  // this makes some sense, think about it
         // return 0;  // if you do not accept negative positions, just return 0
-    } else if (position > L->size) {
-        position = L->size; 
+    } else if (position > L->lenght) {
+        position = L->lenght; 
     }
 
     // allocates memory for the new data point, stops on failure
@@ -51,7 +51,7 @@ int l_insert(list* L, int data, int position){
         aux->next = n;
     }
     
-    L->size++;
+    L->lenght++;
     return 1;
 }
 

@@ -10,7 +10,7 @@ typedef struct list_node node;
 /// Singly linked list capsule
 struct linked_list {
   node* head;  // the first node in the list
-  int size;
+  int lenght;
 }; 
 typedef struct linked_list list;
 

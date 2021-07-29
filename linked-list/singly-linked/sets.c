@@ -1,4 +1,8 @@
-/* 
+/**
+ * @file sets.c
+ * @author Matheus Feres Turcheti (matheusft.mft@gmail.com)
+ * @brief
+	
 	Even though hash maps are data structures naturally set-like,
 it is possible, as we shall do bellow, to make linked lists behave
 as sets, with the operations being quite simple to implement.
@@ -9,8 +13,13 @@ between two lists of ints that are inputed as:
 {b_1, b_2, ..., b_m}
 ^D
   	
-	On any case of failure, the program stops with an error message. 
-*/
+	On any case of failure, the program stops with an error message.
+
+ * @version 0.2
+ * @date 2021-07-29
+ * 
+ */
+
 
 #include <stdlib.h>
 #include <stdio.h>
