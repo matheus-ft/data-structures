@@ -12,7 +12,9 @@
  * `initial_cap` : altough not needed, this implementations limits the minimum array size by its size on definition
 
 ### Operations
- The main operations available on a deque are:
+
+#### Main ones:
+
  * push (appends data to the end of the sequence)
  * pop (retrieves, by remotion, data from the end of the sequence)
  * inject (inserts data in the begining of the sequence)
@@ -20,7 +22,8 @@
  
  It should be noted that this names specifically might be switched depending on the language, programmer, or book author.
 
- In addition to those, let's say, more needful operations, we have implemented a few more:
+#### Other ones:
+
  * first (finds the data in the first position of the sequence)
  * last (finds the data in the last position of the sequence)
  * is_empty (verifies if the sequence is empty or not)
@@ -33,6 +36,8 @@
 
     But it should not be difficult to see where the code should differ in case it is needed for the laws to change.
  * The `min_cap` field is updated every time the `capacity` field is supposed to be altered; but, as the name should imply, `initial_cap` **never** changes, and, in **this** implementation, also limits the halving of `min_cap` (as the "ultimate" minimum capacity).
+
+---
 
  ### Fork and let me know in case you come up with a better and/or more general version of my implementation (or, of course, you've found any mistakes)
  I hope it helped you, though ; )

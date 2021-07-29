@@ -32,21 +32,16 @@ Although different, the general ideia for each of them is the same.
 
  #### Optional info
 
- *  `size` : field containing, not surprisingly, the amount of nodes in the list (also frequently called `lenght`)
+ * `lenght` : field containing, not surprisingly, the amount of nodes in the list
  * `tail` : pointer to the last node in the list (see "Notes" below)
 
 
 
 ### Operations
 
- The main operations available on a linked list are:
  * insert (adds a node in any position)
  * delete (retrieves data, by remotion, in any position)
- 
- In addition to the operations to change the size of the list:
- * printing (prints all the elements in a list with some desired formatting or order)
- * set operations, such as union, intersection, and difference for lists of `int`s (see "Notes" below)
- * self-organizing strategies, such as **m**ove-**t**o-**f**ront, *transpose*, and *count*
+
 
 ### Notes
 
@@ -63,15 +58,8 @@ Although different, the general ideia for each of them is the same.
     * stacks
     * queues
 
-
+---
 
  ### Fork and let me know in case you come up with a better and/or more general version of my implementation (or, of course, you've found any mistakes)
 
  I hope it helped you, though ; )
-
-## To do
-
-- [ ] doubly-linked list
-- [ ] circular linked list
-- [ ] queues
-- [ ] stacks

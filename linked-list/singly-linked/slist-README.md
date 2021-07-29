@@ -18,12 +18,12 @@
 
  ### List itself
  * `head` : pointer to the first node in the list (do not forget it!)
- *  `size` : amount of nodes in the list
+ * `lenght` : amount of nodes in the list
 
 ### Operations
 
  In addition to the general operations:
- * print (prints, sequentially, all the elements in a *s-list* within square brackets)
+ * printing (prints, sequentially, all the elements in a *s-list* within square brackets)
  * set operations (*union*, *intersection*, and *difference*)
  * self-organizing strategies (such as **m**ove-**t**o-**f**ront, *transpose*, and *count*)
  
@@ -37,8 +37,13 @@
     * a doubly linked list requires a lot more memory and does not *actually* reduce the time complexity from $O(n)$, it only makes the operations more efficient
 
     In any case we can also limit the operations to the first node (and last node, if there's some memory to spare to the `tail` field) of the list to avoid linear time
+ 
 
-
+ ## The examples' inputs
+ 
+ At the begining of each one of the example files you'll find a brief introduction and the format of the input for the program
+ 
+ ---
 
  ### Fork and let me know in case you come up with a better and/or more general version of my implementation (or, of course, you've found any mistakes)
 

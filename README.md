@@ -1,4 +1,8 @@
 # Data Structures
+---
+### Always read the `-README.md` files!
+---
+ 
  ## Collection of a few data structures implemented in C.
  
  ## [Linked lists](linked-list)
