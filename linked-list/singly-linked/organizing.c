@@ -1,8 +1,4 @@
-/**
- * @file organizing.c
- * @author Matheus Feres Turcheti (matheusft.mft@gmail.com)
- * @brief 
-    
+/*
     Self-organizing strategies are very useful when its necessary to obtain data
 from a linked list (since it is not one of its strong points, compared to arrays for example),
 making the whole process potentially more efficient.
@@ -14,11 +10,7 @@ int_required int_required ... int_required
 ^D
 
 	On any case of failure, the program stops with an error message.
-
- * @version 0.2
- * @date 2021-07-29
- * 
- */
+*/
 
 
 #include <stdlib.h>
