@@ -1,3 +1,32 @@
+/*
+    To test this implementation of a BST of <int>s you'll have to keep 
+in mind the following commands:
+
+create : creates an empty BST (if there is one already, the old is released and the new is allocated)
+insert x : inserts the key x in the BST (x is int)
+remove x : removes the key x from the BST
+search x : tells you if the key x is in the BST or not
+pre-order : prints all the nodes in the BST with Pre-Order
+in-order : prints all the nodes in the BST with In-Order
+post-order : prints all the nodes in the BST with Post-Order
+successor x : finds the key of the successor node relative to the one with key x
+predecessor x : finds the key of the predecessor node relative to the one with key x
+avl? : checks if the tree is AVL or not
+info : prints the number of nodes, the number of leaves, and the height fo the BST
+longest-path : prints the longest path in the BST
+end : finishes program
+
+    Any other command is suppossed to be ignored. Therefore the input should be:
+
+create
+comands
+end
+^D
+
+    'comands' being all the other operations available.
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -85,7 +114,7 @@ int main(void) {
         }
 
         else if (strcmp(input, "avl?") == 0) {
-            bst_fb(T->root, T);
+            bst_BF(T->root, T);
             if (bst_is_avl(T->root))
                 printf("yes\n");
             else
