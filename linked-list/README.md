@@ -52,7 +52,7 @@ Although different, the general ideia for each of them is the same.
     * `NULL` : null pointer to identify the end of the list
     * `head` : pointer to the head; in this case we call the list **circular** (which can be either singly ou doubly linked)
  
- * [Hash maps](/data-structures/hash-map) (not ready yet) are way better suited to represent sets, but it is still possible to use lists for simple application 
+ * [Hash maps](data-structures/tree/main/hash-map) (not ready yet) are way better suited to represent sets, but it is still possible to use lists for simple application 
 
  * Although the concept of a list as a *sequence* of data points is useful by itself (as a substitution, with pros and cons, for *arrays*), linked lists can also be used to implement other data structures. Some, let's say, *indirect* and simple applications would be:
     * stacks
