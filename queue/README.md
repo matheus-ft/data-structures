@@ -6,7 +6,7 @@ There are two main ways to implement a queue:
 
 In this implementation we utiize a circular buffer (array of `int`s).
 
-However in [BST](data-structures/tree/main/binary-search-tree) it is needed to store some information about our tree in such a way that the *first* node saved is also the *first* one printed, that is *first in, first out*. This is, as we shall see bellow, the organizing method that characterizes the queue structure. So a good example of a queue application is, in fact, in the `bst_height_path` and `bst_print_height` functions.
+However in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-search-tree) it is needed to store some information about our tree in such a way that the *first* node saved is also the *first* one printed, that is *first in, first out*. This is, as we shall see bellow, the organizing method that characterizes the queue structure. So a good example of a queue application is, in fact, in the `bst_height_path` and `bst_print_height` functions.
 
 
 ## Queue structure
