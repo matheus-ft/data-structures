@@ -20,20 +20,20 @@ struct binary_search_tree {
 typedef struct binary_search_tree tree;
 
 /* Auxiliar data structure */
-/// Singly linked list node
-struct list_node {
+/// Singly linked queue node
+struct queue_node {
     int key;
-    struct list_node* next;
+    struct queue_node* next;
 };
-typedef struct list_node lnode;
+typedef struct queue_node lnode;
 
-/// Singly linked list info
-struct linked_list {
+/// Queue capsule
+struct queue_linked_list {
     lnode* head;
     int size;
     lnode* tail;
 };
-typedef struct linked_list list;
+typedef struct queue_linked_list queue;
 
 
 /* ************
@@ -41,29 +41,35 @@ typedef struct linked_list list;
  * ************ */
 
 /**
- * Allocates memory for a linked list with NULL head and size 0
- * @return pointer to the list created or NULL if
+ * Allocates memory for a queue with NULL head and size 0.
+ * @return pointer to the queue created or NULL if
   memory allocation fails.
  */
-list* lalloc();
+queue* queate(void);
 
 /**
- * Inserts a node with certain key in the end of a linked list
- * @param L list receiving the data
+ * Inserts a certain key in a queue (node goes to the end of the linked list).
+ * @param Q queue receiving the data
  * @param key the (integer) key of the node to be inserted
- * @return 1 when successful and 0 otherwise
+ * @return 1 when successful and 0 otherwise.
  */
-int l_append(list* L, int key);
+int enqueue(queue* Q, int key);
 
 /**
- * Prints the keys of a linked list sequentially and separated by spaces
+ * Removes a key from the queue (the first node in the linked list is freed).
+ * @param Q queue from which we remove
  */
-void printl(list* L);
+void dequeue(queue* Q);
 
 /**
- * Deallocate the memory of a linked list
+ * Prints all the data points in a queue (FIFO) separated by spaces.
  */
-void free_list(list* L);
+void printq(queue* Q);
+
+/**
+ * Deallocates the memory of a queue.
+ */
+void free_queue(queue* Q);
 
 
 /* *********
@@ -133,7 +139,8 @@ node* bst_successor(node* p);
 node* bst_predecessor(node* p);
 
 /**
- * Replaces a node by another one within a binary search tree
+ * Replaces a node by another one within a binary search tree. 
+ * The function does not verify if the node is in the tree.
  * @param T pointer to the BST containing the nodes
  * @param old pointer to the node that will be replaced
  * @param new pointer to the node replacing the other one
@@ -141,7 +148,8 @@ node* bst_predecessor(node* p);
 void bst_replace(tree* T, node* old, node* new);
 
 /**
- * Deletes a certain node (by replacing it with its successor and then freeing it) within a BST
+ * Deletes a certain node (by replacing it with its successor and then freeing it) within a BST. 
+ * The function does not verify if the node is in the tree.
  * @param T pointer to the binary search tree in question
  * @param p pointer to the node to be removed
  */
@@ -182,7 +190,6 @@ int bst_nnodes(node* p);
 /**
  * @return the number of leaves in a BST-subtree
  * @param p pointer to the root of the BST-subtree in question
- * @definition "leaf" is a node with two NULL "kids"
  */
 int bst_nleaves(node* p);
 
@@ -201,9 +208,9 @@ int bst_height(node* n, tree* T);
 /**
  * Gives the "path" of the height of a BST-subtree
  * @param n pointer to the root of the BST-subtree in question
- * @return a list with the nodes from <n> to some leaf
+ * @return a queue with the nodes from <n> to some leaf
  */
-list* bst_height_path(node* n);
+queue* bst_height_path(node* n);
 
 /**
  * Prints out the "path" of the height of a BST-subtree

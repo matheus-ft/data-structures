@@ -3,29 +3,36 @@
 #include "bst.h"
 
 
-list* lalloc(){ return calloc(1, sizeof(list)); }
+queue* queate(void){ return calloc(1, sizeof(queue)); }
 
 
-int l_append(list* L, int key){
+int enqueue(queue* Q, int key){
     lnode* n = calloc(1, sizeof(lnode));
     if (!n)
         return 0;
     n->key = key;
 
-    if (L->tail == NULL)
-        L->head = n;
+    if (Q->tail == NULL)
+        Q->head = n;
     else {
-        lnode* last = L->tail;
+        lnode* last = Q->tail;
         last->next = n;
     }
-    L->tail = n;
-    L->size++;
+    Q->tail = n;
+    Q->size++;
     return 1;
 }
 
 
-void printl(list* L){
-    lnode* p = L->head;
+void dequeue(queue* Q){
+    lnode* d = Q->head;
+    Q->head = d->next;
+    free(d);
+}
+
+
+void printq(queue* Q){
+    lnode* p = Q->head;
 
     while (p != NULL) {
         printf("%d ", p->key);
@@ -34,8 +41,8 @@ void printl(list* L){
 }
 
 
-void free_list(list* L){
-    lnode* p = L->head;
+void free_queue(queue* Q){
+    lnode* p = Q->head;
     lnode* aux = NULL;
 
     while (p) {
@@ -44,7 +51,7 @@ void free_list(list* L){
         p = aux;
     }
 
-    free(L);
+    free(Q);
 }
 
 
@@ -305,85 +312,85 @@ int bst_height(node* n, tree* T){
 }
 
 
-list* bst_height_path(node* n){
-    list* L = lalloc();
+queue* bst_height_path(node* n){
+    queue* Q = queate();
 
     if (n == NULL)
-        return L;
+        return Q;
 
-    append(L, n->key);
+    enqueue(Q, n->key);
 
-    list* Ll = lalloc();
-    list* Lr = lalloc();
+    queue* Ql = queate();
+    queue* Qr = queate();
 
     if (!n->right && !n->left) {
-        list_free(Ll);
-        list_free(Lr);
-        return L;
+        free_queue(Ql);
+        free_queue(Qr);
+        return Q;
     }
 
     else if (n->right == NULL) {
-        list* left = bst_height_path(n->left);
+        queue* left = bst_height_path(n->left);
         lnode* p = left->head;
         while (p) {
-            append(Ll, p->key);
+            enqueue(Ql, p->key);
             p = p->next;
         }
     }
 
     else if (n->left == NULL) {
-        list* right = bst_height_path(n->right);
+        queue* right = bst_height_path(n->right);
         lnode* p = right->head;
         while (p) {
-            append(Lr, p->key);
+            enqueue(Qr, p->key);
             p = p->next;
         }
     }
 
     else {
-        list* left = bst_height_path(n->left);
+        queue* left = bst_height_path(n->left);
         lnode* p = left->head;
 
         while (p) {
-            append(Ll, p->key);
+            enqueue(Ql, p->key);
             p = p->next;
         }
 
-        list* right = bst_height_path(n->right);
+        queue* right = bst_height_path(n->right);
         p = right->head;
         while (p) {
-            append(Lr, p->key);
+            enqueue(Qr, p->key);
             p = p->next;
         }
     }
 
-    list* lst = (Ll->size > Lr->size) ? Ll : Lr;
+    queue* lst = (Ql->size > Qr->size) ? Ql : Qr;
     lnode* p = lst->head;
     while (p) {
-        append(L, p->key);
+        enqueue(Q, p->key);
         p = p->next;
     }
 
-    list_free(Ll);
-    list_free(Lr);
-    return L;
+    free_queue(Ql);
+    free_queue(Qr);
+    return Q;
 }
 
 
 int bst_print_height(node* n){
-    list* L = bst_height_path(n);
+    queue* Q = bst_height_path(n);
 
-    if (L->size == 0) {
+    if (Q->size == 0) {
         printf("empty tree\n");
-        list_free(L);
+        free_queue(Q);
         return 0;
     }
 
     printf("longest and most to the right path: ");
-    printl(L);
+    printq(Q);
     printf("\n");
 
-    list_free(L);
+    free_queue(Q);
     return 1;
 }
 
