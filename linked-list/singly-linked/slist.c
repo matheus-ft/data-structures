@@ -20,14 +20,45 @@ void free_list(list* L){
 }
 
 
+int l_inject(list* L, int data){
+    node* n = malloc(sizeof(node));
+    if (n == NULL) return 0;
+    
+    n->data = data;
+    n->counter = 0;
+
+    n->next = L->head;
+    L->head = n;
+
+    L->lenght++;
+    return 1;
+}
+
+
 int l_insert(list* L, int data, int position){
-    // corrects the position argument (in a "user-friendly" way)
-    if (position < 0) {
-        position = L->lenght + position + 1;  // this makes some sense, think about it
-        // return 0;  // if you do not accept negative positions, just return 0
-    } else if (position > L->lenght) {
-        position = L->lenght; 
+    if (position == 0)
+        return l_inject(L, data);
+    else if (position < 0) {
+        fprintf(stderr, "Negative position\n");
+		fprintf(stderr, "Error: %s\n---\n", strerror(errno));
+		return errno;
     }
+    else if (position > L->lenght) {
+        fprintf(stderr, "Index out of range\n");
+		fprintf(stderr, "Error: %s\n---\n", strerror(errno));
+		return errno;
+    }
+
+    /*
+    // If you want to be "user-friendly" and correct the <position> argument
+    // so that the function does not raise any error, use the code below:
+
+    if (position < 0)
+        position = L->lenght + position + 1;  // this makes sense, think about it
+    else if (position > L->lenght)
+        position = L->lenght;
+    
+    */
 
     // allocates memory for the new data point, stops on failure
     node* n = malloc(sizeof(node));
@@ -38,36 +69,68 @@ int l_insert(list* L, int data, int position){
     n->data = data;
     n->counter = 0;
 
-    if (position == 0) {
-        n->next = L->head;
-        L->head = n;
-    } 
-    else {
-        node* aux = L->head;
-        for (int i = 0; i < position - 1; ++i)
-            aux = aux->next;
-        
-        n->next = aux->next;
-        aux->next = n;
-    }
+    node* aux = L->head;
+    for (int i = 0; i < position - 1; ++i)
+        aux = aux->next;
+    
+    n->next = aux->next;
+    aux->next = n;
     
     L->lenght++;
     return 1;
 }
 
 
-node* l_delete(list* L, int position){
-    node* aux = L->head;
-    node* del = aux->next;
-
-    for (int i = 0; i < position - 1; ++i)
-        aux = aux->next;
-        del = del->next;
+node* l_eject(list* L){
+    node* del = L->head;
     
-    node* n = del;
-    aux->next = del->next;
+    if (L->lenght > 0) {
+        L->head = del->next;
+        L->lenght--;
+    }
 
-    return n;
+    return del;
+}
+
+
+node* l_delete(list* L, int position){
+    if (position == 0)
+        return l_eject(L);
+    else if (position < 0) {
+        fprintf(stderr, "Negative position\n");
+		fprintf(stderr, "Error: %s\n---\n", strerror(errno));
+		return NULL;
+    }
+    else if (position >= L->lenght) {
+        fprintf(stderr, "Index out of range\n");
+		fprintf(stderr, "Error: %s\n---\n", strerror(errno));
+		return NULL;
+    }
+
+    /*
+    // If you want to be "user-friendly" and correct the <position> argument
+    // so that the function does not raise any error, use the code below:
+    
+    if (position < 0)
+        position = L->lenght + position;  // this makes sense, think about it
+    else if (position >= L->lenght)
+        position = L->lenght - 1;
+    
+    */
+    
+    node* aux = L->head;
+    node* del = NULL;
+
+    if (L->lenght > 0) {
+        for (int i = 0; i < position - 1; ++i)
+            aux = aux->next;
+        
+        del = aux->next;
+        aux->next = del->next;
+        L->lenght--;
+    }
+
+    return del;
 }
 
 
@@ -75,11 +138,12 @@ void printl(list* L){
     printf("[");
 
     node* p = L->head;
-    while ( (p != NULL) && (p->next != NULL) ) {
-        printf("%d, ",p->data);
-        p = p->next;
-    } if (p)
-        printf("%d",p->data);
+    if (p) {
+        while (p->next != NULL) {
+            printf("%d, ", p->data);
+            p = p->next;
+        } printf("%d",p->data);
+    }
 
-    printf("]");
+    printf("]\n");
 }

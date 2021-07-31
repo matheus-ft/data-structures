@@ -25,28 +25,49 @@ list* lalloc();
 
 
 /**
- * @brief Release a list of ints and all its nodes.
+ * @brief Releases a list of ints and all its nodes.
  */
 void free_list(list* L);
 
 
 /**
- * @brief Insert a new node at the desidred position in a list of ints.
+ * @brief Inserts a new node in the begining of the list.
+ * 
+ * @param L linked list receiving the new node
+ * @param data the data being stored in the new node 
+ * @return 1 on success; or 0 if memory allocation fails. 
+ */
+int l_inject(list* L, int data);
+
+
+/**
+ * @brief Inserts a new node at the desidred position in a list of ints.
 
  * @param L linked list receiving a new node
  * @param data the data being stored in the new node 
- * @param position the "index" of the new node (first node has position == 0)
- * @return 1 on success or 0 if memory allocation.
+ * @param position the "index" of the new node, must be in the closed interval [0, L->lenght]
+ * @return 1 on success; 0 if memory allocation fails; or errno if the position is invalid.
  */
 int l_insert(list* L, int data, int position);
+
+
+/**
+ * @brief Removes a node from the begining of the list.
+ * 
+ * @param L linked list from which we eject the node
+ * @return Address of a node with the data from the ejected element.
+ * If the list is empty, returns NULL.
+ */
+node* l_eject(list* L);
 
 
 /**
  * @brief Removes a node from a certain point in a list of ints.
 
  * @param L linked list from which we delete a node
- * @param position "index" of the node to be removed (first node has position == 0)
+ * @param position "index" of the node to be removed, must be in the right-open interval [0, L->lenght)
  * @return Address of a node with the data from the deleted element.
+ * If the list is empty or the position is invalid, returns NULL.
  */
 node* l_delete(list* L, int position);
 

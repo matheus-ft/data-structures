@@ -18,7 +18,7 @@ int enqueue(queue* q, int key){
         return 0;
 
     int position = (q->first + q->size) % q->capacity;
-    q->data[position] = key;  // because first + size - 1 == last
+    q->data[position] = key;  
 
     q->size++;
     return 1;
@@ -41,7 +41,7 @@ void free_queue(queue* q){
 
 void printq(queue* q){
     int pos = q->first;
-    while (pos < q->capacity){
+    for (int i = 0; i < q->size; i++) {
 		printf("%d ", q->data[pos]);
         pos = (pos + 1) % q->capacity;
     }
