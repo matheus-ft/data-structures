@@ -39,6 +39,8 @@ Although different, the general ideia for each of them is the same.
 
 ### Operations
 
+ * lalloc (allocates memory for a linked list)
+ * free (deallocates the memory of a linked list)
  * insert (adds a node in any position)
  * delete (retrieves data, by remotion, in any position)
 
@@ -48,15 +50,16 @@ Although different, the general ideia for each of them is the same.
  * `previous` :
     * **singly** linked lists do not have this field in their nodes
     * **doubly** linked lists are *characterized* for having this field in their nodes
+ 
  * `next` field for the last node, two approaches:
-    * `NULL` : null pointer to identify the end of the list
+    * `NULL` : null pointer to identify the end of the list (most of the implementations on this repo)
     * `head` : pointer to the head; in this case we call the list **circular** (which can be either singly ou doubly linked)
  
- * [Hash maps](https://github.com/matheus-ft/data-structures/tree/main/hash-map) (not ready yet) are way better suited to represent sets, but it is still possible to use lists for simple application 
-
  * Although the concept of a list as a *sequence* of data points is useful by itself (as a substitution, with pros and cons, for *arrays*), linked lists can also be used to implement other data structures. Some, let's say, *indirect* and simple applications would be:
-    * stacks
+    * [stacks](https://github.com/matheus-ft/data-structures/tree/main/stack) (not ready yet)
     * queues
+		* non-list implementation in [Queue](https://github.com/matheus-ft/data-structures/tree/main/queue)
+		* list implementation in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-search-tree)
 
 ---
 
