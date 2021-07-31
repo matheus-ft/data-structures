@@ -2,14 +2,16 @@
     Self-organizing strategies are very useful when its necessary to obtain data
 from a linked list (since it is not one of its strong points, compared to arrays for example),
 making the whole process potentially more efficient.
-	To test the three strategies implemented (comparing their costs) over a sorted list of ints from 1 to N, the input has to be:
+	To test the three strategies implemented (comparing their costs) over a sorted list of ints from 1 to N
+and with R requirements, the input has to be:
 
 N
-amount_of_requirements
+R
 int_required int_required ... int_required
 ^D
 
 	On any case of failure, the program stops with an error message.
+    Remember: R is the amount of integers being required and those integers must come separeted by spaces only.
 */
 
 
