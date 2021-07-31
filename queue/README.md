@@ -34,7 +34,7 @@ However in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-
 * enqueue (adds new data to que queue)
 * dequeue (removes a data point)
 * printq (prints the data queued)
-* free_queue (deallocates memory for the queue)
+* free (deallocates memory for the queue)
 
 ### Notes
 The `enqueue` and `dequeue` functions are what makes a queue a queue. Wheter it is an array or a list, insertion and deletion always occur in a specific way: **first in, first out**. 

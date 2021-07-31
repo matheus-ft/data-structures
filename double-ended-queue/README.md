@@ -23,7 +23,9 @@
  It should be noted that this names specifically might be switched depending on the language, programmer, or book author.
 
 #### Other ones:
-
+ 
+ * dalloc (allocates memory and starts an empty dynamic array)
+ * free (deallocates memory for the whole deque)
  * first (finds the data in the first position of the sequence)
  * last (finds the data in the last position of the sequence)
  * is_empty (verifies if the sequence is empty or not)
