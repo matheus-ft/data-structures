@@ -18,25 +18,32 @@ int enqueue(queue* Q, int key){
         lnode* last = Q->tail;
         last->next = n;
     }
+
     Q->tail = n;
     Q->size++;
     return 1;
 }
 
 
-void dequeue(queue* Q){
+lnode* dequeue(queue* Q){
     lnode* d = Q->head;
-    Q->head = d->next;
-    free(d);
+
+    if (Q->size > 0) {
+        Q->head = d->next;
+        Q->size--;
+    }
+
+    return d;
 }
 
 
 void printq(queue* Q){
     lnode* p = Q->head;
-
-    while (p != NULL) {
-        printf("%d ", p->key);
-        p = p->next;
+    if (p) {
+        while (p->next != NULL) {
+            printf("%d ", p->key);
+            p = p->next;
+        } printf("%d\n", p->key);
     }
 }
 

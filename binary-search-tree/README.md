@@ -56,7 +56,7 @@
 
 To execute the *longest-path* operation it is needed to store the keys of the nodes in such a way that the first one stored in will be the first one printed out. 
 
-This **FIFO** strategy is better explained in [Queue](queue/queue-README.md). What matters here is that the queue was implemented with a sinlgy-linked list with `tail` pointer.
+This **FIFO** strategy is better explained in [Queue](https://github.com/matheus-ft/data-structures/tree/main/queue). What matters here is that the queue was implemented with a [sinlgy-linked list](https://github.com/matheus-ft/data-structures/tree/main/linked-list/singly-linked) with a `tail` pointer.
 
 ### Structure
 * `head` and `tail` pointers to keep track of the first and last elements in que queue
@@ -68,8 +68,8 @@ This **FIFO** strategy is better explained in [Queue](queue/queue-README.md). Wh
 * queate (creates a queue)
 * enqueue (adds a new key to que queue)
 * dequeue (removes a key - not used here)
-* printq (prints every key in the queue)
-* free_queue (deallocates memory for the queue)
+* print (prints every key in the queue)
+* free (deallocates memory for the queue)
 
 
 

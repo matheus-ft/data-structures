@@ -58,8 +58,9 @@ int enqueue(queue* Q, int key);
 /**
  * Removes a key from the queue (the first node in the linked list is freed).
  * @param Q queue from which we remove
+ * @return Address of a <lnode> with the data copied from the dequeued key.
  */
-void dequeue(queue* Q);
+lnode* dequeue(queue* Q);
 
 /**
  * Prints all the data points in a queue (FIFO) separated by spaces.
