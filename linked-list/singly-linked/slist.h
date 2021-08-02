@@ -35,7 +35,7 @@ void free_list(list* L);
  * 
  * @param L linked list receiving the new node
  * @param data the data being stored in the new node 
- * @return 1 on success; or 0 if memory allocation fails. 
+ * @return 1 on success; 0 on failure. 
  */
 int l_inject(list* L, int data);
 
@@ -46,7 +46,7 @@ int l_inject(list* L, int data);
  * @param L linked list receiving a new node
  * @param data the data being stored in the new node 
  * @param position the "index" of the new node, must be in the closed interval [0, L->lenght]
- * @return 1 on success; 0 if memory allocation fails; or errno if the position is invalid.
+ * @return 1 on success; 0 if list is null/memory allocation fails; errno if the position is invalid.
  */
 int l_insert(list* L, int data, int position);
 
@@ -73,7 +73,7 @@ node* l_delete(list* L, int position);
 
 
 /**
- * @brief Prints the contents of a list of ints with the formatting: [a_1, a_2, ..., a_n].
+ * @brief Prints the <n> elements of a list of ints with the formatting: [a_1, a_2, ..., a_n].
 
  * @param L linked list to be printed
  */

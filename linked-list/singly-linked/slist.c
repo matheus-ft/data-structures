@@ -9,22 +9,24 @@ list* lalloc(){ return calloc(1, sizeof(list)); }
 
 
 void free_list(list* L){
-    node* p = L->head;
-    node* aux = NULL;
+    if (L) {
+        node* p = L->head;
+        node* aux = NULL;
 
-    while (p) {
-        aux = p->next;
-        free(p);
-        p = aux;
+        while (p) {
+            aux = p->next;
+            free(p);
+            p = aux;
+        }
     }
-
     free(L);
 }
 
 
 int l_inject(list* L, int data){
     node* n = malloc(sizeof(node));
-    if (n == NULL) return 0;
+    if (!n || !L) 
+        return 0;
     
     n->data = data;
     n->counter = 0;
@@ -64,7 +66,7 @@ int l_insert(list* L, int data, int position){
 
     // allocates memory for the new data point, stops on failure
     node* n = malloc(sizeof(node));
-    if (n == NULL)
+    if (!n || !L) 
         return 0;
 
     // the insertion itself
@@ -84,6 +86,8 @@ int l_insert(list* L, int data, int position){
 
 
 node* l_eject(list* L){
+    if (!L) return NULL;
+
     node* del = L->head;
     
     if (L->lenght > 0) {
@@ -108,6 +112,8 @@ node* l_delete(list* L, int position){
 		fprintf(stderr, "Error: %s\n---\n", strerror(errno));
 		return NULL;
     }
+    else if (!L)
+        return NULL;
 
     /*
     // If you want to be "user-friendly" and correct the <position> argument
@@ -137,15 +143,17 @@ node* l_delete(list* L, int position){
 
 
 void printl(list* L){
-    printf("[");
-
-    node* p = L->head;
-    if (p) {
-        while (p->next != NULL) {
-            printf("%d, ", p->data);
-            p = p->next;
-        } printf("%d",p->data);
+    if (L) {
+        node* p = L->head;
+        if (p) {
+            printf("[");
+            while (p->next != NULL) {
+                printf("%d, ", p->data);
+                p = p->next;
+            } printf("%d]\n",p->data);
+        } else
+            printf("The list is empty.\n");
     }
-
-    printf("]\n");
+    else
+        printf("There is no list.\n");
 }
