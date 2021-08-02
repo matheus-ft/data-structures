@@ -58,7 +58,7 @@ int enqueue(queue* Q, int key);
 /**
  * Removes a key from the queue (the first node in the linked list is freed).
  * @param Q queue from which we remove
- * @return Address of a <lnode> with the data copied from the dequeued key.
+ * @return Address of a <lnode> with the data copied from the dequeued key; or NULL if Q is null.
  */
 lnode* dequeue(queue* Q);
 
@@ -95,7 +95,7 @@ node* bst_search(node* p, int k);
  * Inserts data in a binary search tree
  * @param T pointer to the BST
  * @param data (integer) key of the node to be inserted
- * @return 1 when successful and 0 otherwise (insufficient memory or already existing key)
+ * @return 1 when successful and 0 otherwise (invalid tree, insufficient memory, already existing key)
  */
 int bst_insert(tree* T, int data);
 
@@ -142,6 +142,7 @@ node* bst_predecessor(node* p);
 /**
  * Replaces a node by another one within a binary search tree. 
  * The function does not verify if the node is in the tree.
+ * The function does nothing if the tree is invalid or if the old node is null.
  * @param T pointer to the BST containing the nodes
  * @param old pointer to the node that will be replaced
  * @param new pointer to the node replacing the other one
@@ -160,7 +161,7 @@ void bst_delete(tree* T, node* p);
  * Removes a key from a BST (by searching for its node and deleting it)
  * @param T pointer to the binary search tree
  * @param key (integer) key of the node to be removed
- * @return 1 when successful and 0 otherwise (data not in the tree)
+ * @return 1 when successful and 0 otherwise (invalid tree or data not in the tree)
  */
 int bst_remove(tree* T, int key);
 
@@ -195,12 +196,7 @@ int bst_nnodes(node* p);
 int bst_nleaves(node* p);
 
 /**
- * @return the maximum between two integers
- */
-int max(int a, int b);
-
-/**
- * @return the height of a BST-subtree
+ * @return the height of a BST-subtree (-1 means node is son of a leaf and -10 means invalid tree)
  * @param n pointer to the root of the BST-subtree in question
  * @param T pointer to the BST containing the node pointed by <n>
  */

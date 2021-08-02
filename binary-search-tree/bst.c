@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bst.h"
+#define max(a, b) ( (a > b) ? a : b )
 
 
 queue* queate(void){ return calloc(1, sizeof(queue)); }
@@ -8,7 +9,7 @@ queue* queate(void){ return calloc(1, sizeof(queue)); }
 
 int enqueue(queue* Q, int key){
     lnode* n = calloc(1, sizeof(lnode));
-    if (!n)
+    if (!n || !Q)
         return 0;
     n->key = key;
 
@@ -26,6 +27,8 @@ int enqueue(queue* Q, int key){
 
 
 lnode* dequeue(queue* Q){
+    if (!Q) return NULL;
+
     lnode* d = Q->head;
 
     if (Q->size > 0) {
@@ -38,26 +41,32 @@ lnode* dequeue(queue* Q){
 
 
 void printq(queue* Q){
-    lnode* p = Q->head;
-    if (p) {
-        while (p->next != NULL) {
-            printf("%d ", p->key);
-            p = p->next;
-        } printf("%d\n", p->key);
+    if (Q) {
+        lnode* p = Q->head;
+        if (p) {
+            while (p->next != NULL) {
+                printf("%d ", p->key);
+                p = p->next;
+            } printf("%d\n", p->key);
+        } else
+            printf("The queue is empty.\n");
     }
+    else
+        printf("There is no queue.\n");
 }
 
 
 void free_queue(queue* Q){
-    lnode* p = Q->head;
-    lnode* aux = NULL;
+    if (Q) {
+        lnode* p = Q->head;
+        lnode* aux = NULL;
 
-    while (p) {
-        aux = p->next;
-        free(p);
-        p = aux;
+        while (p) {
+            aux = p->next;
+            free(p);
+            p = aux;
+        }
     }
-
     free(Q);
 }
 
@@ -77,6 +86,11 @@ node* bst_search(node* p, int k){
 
 
 int bst_insert(tree* T, int data){
+    if (T == NULL) {
+        printf("invalid tree\n");
+        return 0;
+    }
+
     node* knot = calloc(1, sizeof(node));
 
     if (!knot) {  // that is: memory allocation failed
@@ -97,7 +111,7 @@ int bst_insert(tree* T, int data){
             else if (p->key < data)
                 p = p->right;
             else {
-                printf("this key (%d) is already in the tree\n", data);
+                printf("the key (%d) is already in the tree\n", data);
                 return 0;
             }
         }
@@ -119,8 +133,7 @@ void bst_subtree_free(node* p){
     if (p) {
         bst_subtree_free(p->left);
         bst_subtree_free(p->right);
-        free(p);
-    }
+    } free(p);
 }
 
 
@@ -212,7 +225,7 @@ node* bst_predecessor(node* p){
 
 
 void bst_replace(tree* T, node* old, node* new){
-    if (old != NULL) {
+    if (T && old) {
         
         // if the old node is the root of T, then the new root will be the new node
         if (old->father == NULL)
@@ -225,7 +238,7 @@ void bst_replace(tree* T, node* old, node* new){
             old->father->right = new;
 
 
-        if (new)  //  (new != NULL)
+        if (new != NULL)
             new->father = old->father;
     }
 }
@@ -254,6 +267,8 @@ void bst_delete(tree* T, node* p){
 
 
 int bst_remove(tree* T, int key){
+    if (T == NULL) return 0;
+
     node* p = bst_search(T->root, key);
     
     if (p == NULL)  // if the key to be removed is not in the tree,
@@ -308,10 +323,9 @@ int bst_nleaves(node* p){
 }
 
 
-int max(int a, int b){ return (a > b) ? a : b; }
-
-
 int bst_height(node* n, tree* T){
+    if (!T) return -10;
+
     if (n == NULL)
         return n == T->root ? 0 : -1;
 
