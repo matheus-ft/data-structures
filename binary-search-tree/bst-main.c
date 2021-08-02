@@ -19,11 +19,11 @@ end : finishes program
     Any other command is suppossed to be ignored. Therefore the input should be:
 
 create
-comands
+commands
 end
 ^D
 
-    'comands' being all the other operations available.
+    'commands' being a sequence of some operations from the ones available.
 */
 
 
@@ -35,26 +35,30 @@ end
 
 int main(void) {
     tree* T = NULL;
-    char input[20];
+    char input[13];  // each position is a letter (last one is '\0')
 
-    scanf("%s ", input);
-    while (1) {
+    do {
+        scanf("%s ", input);
+
         if (strcmp(input, "create") == 0) {
             if (T != NULL) {
                 bst_subtree_free(T->root);
             }
             T = bst_create();
         }
+
         else if (strcmp(input, "insert") == 0) {
             int x;
             scanf("%d ", &x);
             bst_insert(T, x);
         }
+
         else if (strcmp(input, "remove") == 0) {
             int x;
             scanf("%d ", &x);
             bst_remove(T, x);
         }
+
         else if (strcmp(input, "search") == 0) {
             int x;
             scanf("%d ", &x);
@@ -73,6 +77,7 @@ int main(void) {
                 printf("\n");
             }
         }
+
         else if (strcmp(input, "in-order") == 0) {
             if (!T || !T->root)
                 printf("empty tree\n");
@@ -82,6 +87,7 @@ int main(void) {
                 printf("\n");
             }
         }
+
         else if (strcmp(input, "post-order") == 0) {
             if (!T || !T->root)
                 printf("empty tree\n");
@@ -102,6 +108,7 @@ int main(void) {
             else
                 printf("%d has no successor\n", x);
         }
+
         else if (strcmp(input, "predecessor") == 0) {
             int x;
             scanf("%d ", &x);
@@ -120,19 +127,21 @@ int main(void) {
             else
                 printf("no\n");
         }
-        else if (strcmp(input, "info") == 0) {
+        
+        else if (strcmp(input, "info") == 0) 
             printf("nodes: %d, leaves: %d, height: %d\n", bst_nnodes(T->root), bst_nleaves(T->root), bst_height(T->root, T));
-        }
-        else if (strcmp(input, "longest-path") == 0) {
+        
+        else if (strcmp(input, "longest-path") == 0) 
             bst_print_height(T->root);
-        }
 
         else if (strcmp(input, "end") == 0) {
             bst_free(T);
             return 1;
         }
-        scanf("%s ", input);
-    }
+
+        else printf("Oops, '%s' is an invalid command, try again!\n", input);
+
+    } while (1);
 
     return 0;
 }

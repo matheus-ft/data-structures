@@ -33,6 +33,7 @@
  * avl? (checks if a BST is AVL or not)
  * info (number of nodes, number of leaves, and height of a subtree)
    * definition: "leaf" is a node with two NULL "kids"
+   * definition: "height" of a node is the largest number of edges (father-son pointer) from that node to some leaf
  * longest-path (prints the longest - and most to the right - path inside a subtree)
 
 
