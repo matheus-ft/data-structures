@@ -60,7 +60,7 @@ int da_push(darray* A, char* string);
    the string.  The capacity will never be smaller than the initial capacity.
 
  * @param A dynamic array from which data is being retrievied
- * @return Address of the data copied from the former last element. 
+ * @return Address of the data copied from the former last element. Or NULL if A is null.
  */
 char* da_pop(darray* A);
 
@@ -85,25 +85,25 @@ int da_inject(darray* A, char* string);
    the string.  The capacity will never be smaller than the initial capacity.
 
  * @param A dynamic array from which data is being retrievied
- * @return Address of the data copied from the former first element.
+ * @return Address of the data copied from the former first element. Or NULL if A is null.
  */
 char* da_eject(darray* A);
 
 
 /**
- * @return Pointer to the first string in the sequence.
+ * @return Pointer to the first string in the sequence. Or NULL if A is null.
  */
 char* da_first(darray* A);
 
 
 /**
- * @return A pointer to the last string in the sequence. 
+ * @return A pointer to the last string in the sequence. Or NULL if A is null.
  */
 char* da_last(darray* A);
 
 
 /**
- * @return 1 if the sequence is empty, otherwise returns 0. 
+ * @return The size of the sequence (if 0, then yes, it is empty). Or -1 if A is null.
  */
 int da_is_empty(darray* A);
 

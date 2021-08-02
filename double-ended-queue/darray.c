@@ -22,26 +22,27 @@ darray* dalloc(int capacity){
 
 
 void free_darray(darray* A){
-    int last = A->size + A->first - 1;
-    int u;
+    if (A != NULL) {
+        int last = A->size + A->first - 1;
+        int u;
 
-    for (int i = A->first; i <= last; ++i) {
-        u = i % A->capacity;
-        free(A->data[u]);
+        for (int i = A->first; i <= last; ++i) {
+            u = i % A->capacity;
+            free(A->data[u]);
+        }
+
+        free(A->data);
     }
-
-    free(A->data);
-
     free(A);
 }
 
 
 int da_push(darray* A, char* string){
     char* str = malloc( (strlen(string) + 1) * sizeof(char));
-    if (str)
-        strcpy(str, string);
-    else
+    if (!str || !A)
         return 0;
+    else
+        strcpy(str, string);
 
     int last = A->size + A->first - 1;
 
@@ -88,6 +89,8 @@ int da_push(darray* A, char* string){
 
 
 char* da_pop(darray* A){
+    if (A == NULL)
+        return A;
     if (A->size == 0)
         return NULL;
 
@@ -133,10 +136,10 @@ char* da_pop(darray* A){
 
 int da_inject(darray* A, char* string){
     char* str = malloc( (strlen(string) + 1) * sizeof(char));
-    if (str != NULL) 
-        strcpy(str, string);
-    else
+    if (!str || !A)
         return 0;
+    else
+        strcpy(str, string);
 
     int last = A->size + A->first - 1;
 
@@ -182,6 +185,8 @@ int da_inject(darray* A, char* string){
 
 
 char* da_eject(darray* A){
+    if (A == NULL)
+        return A;
     if (A->size == 0)
         return NULL;
 
@@ -227,18 +232,23 @@ char* da_eject(darray* A){
 }
 
 
-char* da_first(darray* A){ return A->data[A->first]; }
+char* da_first(darray* A){
+    if (A == NULL)
+        return NULL;
+    return A->data[A->first]; 
+}
 
 
 char* da_last(darray* A){
+    if (A == NULL)
+        return NULL;
     int last = ( A->size + A->first - 1 ) % A->capacity;
     return A->data[last];
 }
 
 
 int da_is_empty(darray* A){
-    if (A == NULL || A->size == 0)
-        return 1;
-    else
-        return 0;
+    if (A == NULL)
+        return -1;
+    return A->size;
 }
