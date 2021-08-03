@@ -60,7 +60,7 @@ To execute the *longest-path* operation it is needed to store the keys of the no
 This **FIFO** strategy is better explained in [Queue](https://github.com/matheus-ft/data-structures/tree/main/queue). What matters here is that the queue was implemented with a [sinlgy-linked list](https://github.com/matheus-ft/data-structures/tree/main/linked-list/singly-linked) with a `tail` pointer.
 
 ### Structure
-* `head` and `tail` pointers to keep track of the first and last elements in que queue
+* `head` and `tail` : pointers to keep track of the first and last elements in que queue
 * `size` : number of keys in the queue
 * `key` and `next` : data stored in each list node and the link between consecutive nodes
 

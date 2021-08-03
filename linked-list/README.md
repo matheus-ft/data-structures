@@ -55,8 +55,8 @@ Although different, the general ideia for each of them is the same.
     * `NULL` : null pointer to identify the end of the list (most of the implementations on this repo)
     * `head` : pointer to the head; in this case we call the list **circular** (which can be either singly ou doubly linked)
  
- * Although the concept of a list as a *sequence* of data points is useful by itself (as a substitution, with pros and cons, for *arrays*), linked lists can also be used to implement other data structures. Some, let's say, *indirect* and simple applications would be:
-    * [stacks](https://github.com/matheus-ft/data-structures/tree/main/stack) (not ready yet)
+ * Although the concept of a list as a *chain* of data points is useful by itself (as a substitution, with pros and cons, for *arrays*), linked lists can also be used to implement other data structures. Some, let's say, *indirect* and simple applications would be:
+    * [stacks](https://github.com/matheus-ft/data-structures/tree/main/stack)
     * queues
 		* non-list implementation in [Queue](https://github.com/matheus-ft/data-structures/tree/main/queue)
 		* list implementation in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-search-tree)

@@ -9,3 +9,5 @@
  ## [Binary search tree](binary-search-tree)
  
  ## [Queue](queue)
+
+ ## [Stack](stack)

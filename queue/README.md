@@ -6,7 +6,7 @@ There are two main ways to implement a queue:
 
 In this implementation we utiize a circular buffer (array of `int`s).
 
-However in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-search-tree) it is needed to store some information about our tree in such a way that the *first* node saved is also the *first* one printed, that is *first in, first out*. This is, as we shall see bellow, the organizing method that characterizes the queue structure. So a good example of a queue application is, in fact, in the `bst_height_path` and `bst_print_height` functions.
+However in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-search-tree) it is needed to store some information about our tree in such a way that the *first* node saved is also the *first* one printed, that is *first in, first out*. This is, as we shall see bellow, the organizing method that characterizes the queue structure. Therefore a good example of a queue application is, in fact, in the `bst_height_path` and `bst_print_height` functions.
 
 
 ## Queue structure
@@ -26,14 +26,14 @@ However in [BST](https://github.com/matheus-ft/data-structures/tree/main/binary-
 * `tail` : pointer to the last element in the queue
 
 #### Doubly-linked
-* The `next` field of the last node points to the head and head's `previous` points to the last node in the list
+* The `next` field of the last node points to the head and head's `previous` points to the last node in the list (i.e. it is *ciruclar*)
 
 
 ### Operations
 * queate (creates a queue)
-* enqueue (adds new data to que queue)
-* dequeue (removes a data point)
-* printq (prints the data queued)
+* enqueue (adds new data to que queue - also known as *push*)
+* dequeue (removes a data point - also known as *eject*)
+* print (prints the data queued)
 * free (deallocates memory for the queue)
 
 ### Notes
