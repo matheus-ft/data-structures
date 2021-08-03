@@ -32,9 +32,9 @@ int enqueue(queue* q, int key);
  * @brief Deletes the first data point in the queue by invalidating
  * its position with the `first` and `size` fields.
  * 
- * @return The value removed.
+ * @return The address of value removed. If que queue is null or empty, it returns NULL.
  */
-int dequeue(queue* q);
+int* dequeue(queue* q);
 
 /**
  * @brief Releases a queue and its array.

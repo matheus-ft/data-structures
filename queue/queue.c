@@ -26,15 +26,18 @@ int enqueue(queue* q, int key){
     return 1;
 }
 
-int dequeue(queue* q){
-    if (q != NULL) {
+int* dequeue(queue* q){
+    if (q == NULL) return q;
+    else if (q->size > 0) {
         int ex = q->first;
 
         q->first = (q->first + 1) % q->capacity;
         q->size--;
 
-        return q->data[ex];
-    }
+        int* d = q->data[ex];
+        return d;
+    } 
+    else return NULL;
 }
 
 void free_queue(queue* q){
