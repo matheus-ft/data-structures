@@ -1,13 +1,13 @@
 # Data Structures
- 
- ## Collection of a few data structures implemented in C.
- 
- ## [Linked lists](linked-list)
 
- ## [Double-ended queue](double-ended-queue)
+## Collection of a few data structures implemented in C
 
- ## [Binary search tree](binary-search-tree)
- 
- ## [Queue](queue)
+## [Linked lists](linked-list)
 
- ## [Stack](stack)
+## [Double-ended queue](double-ended-queue)
+
+## [Binary search tree](binary-search-tree)
+
+## [Queue](queue)
+
+## [Stack](stack)

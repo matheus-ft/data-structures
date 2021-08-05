@@ -21,7 +21,7 @@ typedef struct linked_list list;
  * @return A pointer to the new list or NULL if
   memory allocation fails.
  */
-list* lalloc();
+list* lalloc(void);
 
 
 /**
@@ -56,7 +56,7 @@ int l_insert(list* L, int data, int position);
  * 
  * @param L linked list from which we eject the node
  * @return Address of a node with the data from the ejected element.
- * If the list is empty, returns NULL.
+ * If the list is empty or null, returns NULL.
  */
 node* l_eject(list* L);
 

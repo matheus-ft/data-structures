@@ -5,7 +5,7 @@
 #include "slist.h"
 
 
-list* lalloc(){ return calloc(1, sizeof(list)); }
+list* lalloc(void){ return calloc(1, sizeof(list)); }
 
 
 void free_list(list* L){
