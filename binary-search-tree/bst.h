@@ -20,7 +20,7 @@ struct binary_search_tree {
 typedef struct binary_search_tree tree;
 
 /* Auxiliar data structure */
-/// Singly linked queue node
+/// Singly linked list node
 struct queue_node {
     int key;
     struct queue_node* next;
